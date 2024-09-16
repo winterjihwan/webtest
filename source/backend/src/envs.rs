@@ -1,9 +1,13 @@
+use std::path::PathBuf;
+
 use lazy_static::lazy_static;
 use serde::Deserialize;
 
 lazy_static! {
     pub static ref ENVS: Envs = Envs::new();
 }
+
+const SERVER_ENV_PATH: &'static str = "/etc/secrets/.env";
 
 #[derive(Deserialize, Debug)]
 pub struct Envs {
@@ -14,10 +18,8 @@ pub struct Envs {
 
 impl Envs {
     pub fn new() -> Envs {
-        let current_dir = std::env::current_dir().unwrap();
-        let env_path = current_dir.join(".env");
+        let env_path = PathBuf::from(SERVER_ENV_PATH).join(".env");
         println!("env path: {:?}", env_path);
-        println!("cur path: {:?}", current_dir);
 
         dotenvy::from_path(&env_path).expect(&format!(
             "{}, Failed to locate .env, path: {:?}",
