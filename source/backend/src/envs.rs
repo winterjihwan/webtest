@@ -1,13 +1,9 @@
-use std::path::PathBuf;
-
 use lazy_static::lazy_static;
 use serde::Deserialize;
 
 lazy_static! {
     pub static ref ENVS: Envs = Envs::new();
 }
-
-const SERVER_ENV_PATH: &'static str = "/etc/secrets/.env";
 
 #[derive(Deserialize, Debug)]
 pub struct Envs {
@@ -18,22 +14,14 @@ pub struct Envs {
 
 impl Envs {
     pub fn new() -> Envs {
-        let env_path = PathBuf::from(SERVER_ENV_PATH).join(".env");
-        println!("env path: {:?}", env_path);
+        let db_endpoint = std::env::var("DB_ENDPOINT").expect("Db endpoint not provided");
+        let db_username = std::env::var("DB_USERNAME").expect("Db username not provided");
+        let db_password = std::env::var("DB_ENDPOINT").expect("Db password not provided");
 
-        dotenvy::from_path(&env_path).expect(&format!(
-            "{}, Failed to locate .env, path: {:?}",
-            env!("CARGO_PKG_NAME"),
-            env_path,
-        ));
-
-        match envy::from_env::<Envs>() {
-            Ok(envs) => {
-                println!("Loaded dot env,  env: {:?}", envs);
-
-                return envs;
-            }
-            Err(error) => panic!("Dot env is invalid, {:#?}", error),
-        };
+        Envs {
+            db_endpoint,
+            db_username,
+            db_password,
+        }
     }
 }
