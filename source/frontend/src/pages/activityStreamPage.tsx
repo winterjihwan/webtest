@@ -29,7 +29,7 @@ const ActivityStreamPage: React.FC = () => {
     const fetchLectures = async () => {
       try {
         const response = await axios.post(
-          "https://webtest-g9ji.onrender.com/get_all_enrolled_lectures",
+          "https://webtest-g9ji.onrender.com/4500/get_all_enrolled_lectures",
           {
             student_id: user.student_id,
           },

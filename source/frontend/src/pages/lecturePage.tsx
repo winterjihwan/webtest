@@ -32,7 +32,7 @@ const LecturePage: React.FC = () => {
     const fetchLectures = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:4500/get_lectures",
+          "https://webtest-g9ji.onrender.com/4500/get_lectures",
           {
             course_id: courseId,
           },
@@ -58,12 +58,15 @@ const LecturePage: React.FC = () => {
       const combinedText = `${lectureSubject}: ${lectureContent}`;
 
       try {
-        const response = await axios.post("http://localhost:4500/add_lecture", {
-          lecture_id: `${courseId}-${new Date().getTime()}`,
-          course_id: courseId,
-          professor_id: user.student_id,
-          content: combinedText,
-        });
+        const response = await axios.post(
+          "https://webtest-g9ji.onrender.com/4500/add_lecture",
+          {
+            lecture_id: `${courseId}-${new Date().getTime()}`,
+            course_id: courseId,
+            professor_id: user.student_id,
+            content: combinedText,
+          },
+        );
 
         if (!response.data.error) {
           setSuccessMessage("Lecture added successfully!");

@@ -32,9 +32,12 @@ const ProfessorPage: React.FC = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.post("http://localhost:4500/get_courses", {
-          professor_id: user.student_id,
-        });
+        const response = await axios.post(
+          "https://webtest-g9ji.onrender.com/4500/get_courses",
+          {
+            professor_id: user.student_id,
+          },
+        );
         console.log("response: ", response);
         setCourses(response.data.payload);
       } catch (error) {
@@ -52,12 +55,15 @@ const ProfessorPage: React.FC = () => {
       event.preventDefault();
 
       try {
-        const response = await axios.post("http://localhost:4500/add_course", {
-          professor_id: user.student_id,
-          course_id: courseId,
-          course_name: courseName,
-          enrolled_ids: [],
-        });
+        const response = await axios.post(
+          "https://webtest-g9ji.onrender.com/4500/add_course",
+          {
+            professor_id: user.student_id,
+            course_id: courseId,
+            course_name: courseName,
+            enrolled_ids: [],
+          },
+        );
         console.log("response: ", response);
 
         setSuccessMessage("Course added successfully!");
@@ -87,7 +93,7 @@ const ProfessorPage: React.FC = () => {
     async (courseId: string, studentId: string) => {
       try {
         const response = await axios.post(
-          "http://localhost:4500/remove_student",
+          "https://webtest-g9ji.onrender.com/4500/remove_student",
           {
             course_id: courseId,
             student_id: studentId,

@@ -30,7 +30,7 @@ const StudentPage: React.FC = () => {
   const fetchAllCourses = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:4500/get_all_courses",
+        "https://webtest-g9ji.onrender.com/4500/get_all_courses",
       );
       if (response.data && response.data.payload) {
         setAllCourses(response.data.payload);
@@ -45,7 +45,7 @@ const StudentPage: React.FC = () => {
   const fetchEnrolledCourses = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:4500/get_enrolled_courses",
+        "https://webtest-g9ji.onrender.com/4500/get_enrolled_courses",
         {
           student_id: user.student_id,
         },
@@ -70,10 +70,13 @@ const StudentPage: React.FC = () => {
   const handleEnroll = useCallback(
     async (courseId: string) => {
       try {
-        const response = await axios.post("http://localhost:4500/enroll", {
-          course_id: courseId,
-          student_id: user.student_id,
-        });
+        const response = await axios.post(
+          "https://webtest-g9ji.onrender.com/4500/enroll",
+          {
+            course_id: courseId,
+            student_id: user.student_id,
+          },
+        );
 
         if (!response.data.error) {
           setSuccessMessage(`Successfully enrolled in course ${courseId}`);
