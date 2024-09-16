@@ -5,8 +5,6 @@ lazy_static! {
     pub static ref ENVS: Envs = Envs::new();
 }
 
-//const : &'static str = "source/backend";
-
 #[derive(Deserialize, Debug)]
 pub struct Envs {
     pub db_endpoint: String,
@@ -16,9 +14,10 @@ pub struct Envs {
 
 impl Envs {
     pub fn new() -> Envs {
-        let env_path = format!(".env");
-        println!("env path: {}", env_path);
-        println!("cur path: {}", std::env::current_dir().unwrap().display());
+        let current_dir = std::env::current_dir().unwrap();
+        let env_path = current_dir.join(".env");
+        println!("env path: {:?}", env_path);
+        println!("cur path: {:?}", current_dir);
 
         dotenvy::from_path(&env_path).expect(&format!(
             "{}, Failed to locate .env, path: {:?}",
