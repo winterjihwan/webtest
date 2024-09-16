@@ -32,7 +32,7 @@ const LecturePage: React.FC = () => {
     const fetchLectures = async () => {
       try {
         const response = await axios.post(
-          "https://webtest-g9ji.onrender.com/4500/get_lectures",
+          "https://webtest-g9ji.onrender.com/get_lectures",
           {
             course_id: courseId,
           },
@@ -59,7 +59,7 @@ const LecturePage: React.FC = () => {
 
       try {
         const response = await axios.post(
-          "https://webtest-g9ji.onrender.com/4500/add_lecture",
+          "https://webtest-g9ji.onrender.com/add_lecture",
           {
             lecture_id: `${courseId}-${new Date().getTime()}`,
             course_id: courseId,

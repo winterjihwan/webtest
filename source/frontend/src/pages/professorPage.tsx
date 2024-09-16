@@ -33,7 +33,7 @@ const ProfessorPage: React.FC = () => {
     const fetchCourses = async () => {
       try {
         const response = await axios.post(
-          "https://webtest-g9ji.onrender.com/4500/get_courses",
+          "https://webtest-g9ji.onrender.com/get_courses",
           {
             professor_id: user.student_id,
           },
@@ -56,7 +56,7 @@ const ProfessorPage: React.FC = () => {
 
       try {
         const response = await axios.post(
-          "https://webtest-g9ji.onrender.com/4500/add_course",
+          "https://webtest-g9ji.onrender.com/add_course",
           {
             professor_id: user.student_id,
             course_id: courseId,
@@ -93,7 +93,7 @@ const ProfessorPage: React.FC = () => {
     async (courseId: string, studentId: string) => {
       try {
         const response = await axios.post(
-          "https://webtest-g9ji.onrender.com/4500/remove_student",
+          "https://webtest-g9ji.onrender.com/remove_student",
           {
             course_id: courseId,
             student_id: studentId,
