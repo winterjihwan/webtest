@@ -16,7 +16,7 @@ impl Envs {
     pub fn new() -> Envs {
         let db_endpoint = std::env::var("DB_ENDPOINT").expect("Db endpoint not provided");
         let db_username = std::env::var("DB_USERNAME").expect("Db username not provided");
-        let db_password = std::env::var("DB_ENDPOINT").expect("Db password not provided");
+        let db_password = std::env::var("DB_PASSWORD").expect("Db password not provided");
 
         Envs {
             db_endpoint,
