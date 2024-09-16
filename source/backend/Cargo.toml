@@ -1,0 +1,33 @@
+[package]
+name = "backend"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+axum = "0.7.5"
+serde = { version = "1.0.210", features = ["derive"] }
+serde_json = "1.0.128"
+tokio = { version = "1.40.0", features = ["full"] }
+sqlx = { version = "0.7", features = [
+	"tls-rustls",
+	"runtime-tokio",
+	"postgres",
+	"chrono",
+	"rust_decimal",
+	"json",
+	"uuid",
+] }
+dotenvy = "0.15"
+envy = "0.4"
+lazy_static = "1.4"
+strum_macros = { version = "0.26" }
+strum = "0.26"
+tower = { version = "0.4", features = ["util", "timeout"] }
+tower-http = { version = "0.5", features = [
+	"fs",
+	"trace",
+	"cors",
+	"catch-panic",
+] }
+bcrypt = "0.15.1"
+chrono = "0.4.38"
