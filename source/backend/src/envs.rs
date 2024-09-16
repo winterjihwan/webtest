@@ -6,7 +6,7 @@ lazy_static! {
     pub static ref ENVS: Envs = Envs::new();
 }
 
-const CRATE_PATH: &'static str = "source/backend";
+//const CRATE_PATH: &'static str = "source/backend";
 
 #[derive(Deserialize, Debug)]
 pub struct Envs {
@@ -17,7 +17,7 @@ pub struct Envs {
 
 impl Envs {
     pub fn new() -> Envs {
-        let env_path = Path::new(CRATE_PATH).join(format!(".env"));
+        let env_path = format!(".env");
 
         dotenvy::from_path(&env_path).expect(&format!(
             "{}, Failed to locate .env, path: {:?}",
