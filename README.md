@@ -6,7 +6,7 @@ for frontend, please use local deployments
 ```bash
 git clone https://github.com/winterjihwan/webtest.git
 cd webtest
-cd source/frontennd
+cd source/frontend
 npm install
 npm start
 ```
